@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近大环境不景气，互联网企业巨头也开始并购取暖了。前有滴滴和快的，后有美团和大众点评，现在是阿里收购土豆优酷。 当然阿里这个收购和前面的两宗并购目的和意义完全不同。前面两宗完全是为了产生垄断性的企业，减少行业内部的竞争内耗，而网络视频这个行业，目前的格局是优酷土豆、爱奇艺PPS、腾讯视频分列中国网络视频市场广告收入的前三名，三足鼎立，这次收购并没有对行业的市场格局产生影响。有意思的是互联网三巨头B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从阿里巴巴收购土豆优酷谈起">
+<meta property="og:url" content="http://blog.waynedeng.com/2015/10/19/随笔/从阿里巴巴收购土豆优酷谈起/index.html">
+<meta property="og:site_name" content="Wayne Deng&#39;s Blog">
+<meta property="og:description" content="最近大环境不景气，互联网企业巨头也开始并购取暖了。前有滴滴和快的，后有美团和大众点评，现在是阿里收购土豆优酷。 当然阿里这个收购和前面的两宗并购目的和意义完全不同。前面两宗完全是为了产生垄断性的企业，减少行业内部的竞争内耗，而网络视频这个行业，目前的格局是优酷土豆、爱奇艺PPS、腾讯视频分列中国网络视频市场广告收入的前三名，三足鼎立，这次收购并没有对行业的市场格局产生影响。有意思的是互联网三巨头B">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-bbf65e5611dca5b1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-11T15:35:51.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从阿里巴巴收购土豆优酷谈起">
+<meta name="twitter:description" content="最近大环境不景气，互联网企业巨头也开始并购取暖了。前有滴滴和快的，后有美团和大众点评，现在是阿里收购土豆优酷。 当然阿里这个收购和前面的两宗并购目的和意义完全不同。前面两宗完全是为了产生垄断性的企业，减少行业内部的竞争内耗，而网络视频这个行业，目前的格局是优酷土豆、爱奇艺PPS、腾讯视频分列中国网络视频市场广告收入的前三名，三足鼎立，这次收购并没有对行业的市场格局产生影响。有意思的是互联网三巨头B">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/294870-bbf65e5611dca5b1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.waynedeng.com/2015/10/19/随笔/从阿里巴巴收购土豆优酷谈起/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从阿里巴巴收购土豆优酷谈起 | Wayne Deng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wayne Deng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">技术、思想的点滴</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.waynedeng.com/2015/10/19/随笔/从阿里巴巴收购土豆优酷谈起/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wayne Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wayne Deng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从阿里巴巴收购土豆优酷谈起
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-10-19 13:50:00" itemprop="dateCreated datePublished" datetime="2015-10-19T13:50:00+08:00">2015-10-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-11 23:35:51" itemprop="dateModified" datetime="2018-09-11T23:35:51+08:00">2018-09-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近大环境不景气，互联网企业巨头也开始并购取暖了。前有滴滴和快的，后有美团和大众点评，现在是阿里收购土豆优酷。</p>
+<p>当然阿里这个收购和前面的两宗并购目的和意义完全不同。前面两宗完全是为了产生垄断性的企业，减少行业内部的竞争内耗，而网络视频这个行业，目前的格局是优酷土豆、爱奇艺PPS、腾讯视频分列中国网络视频市场广告收入的前三名，三足鼎立，这次收购并没有对行业的市场格局产生影响。有意思的是互联网三巨头BAT，爱奇艺是百度旗下，腾讯视频自然是属于T，现在优酷土豆终于落入了阿里旗下，完成了BAT三巨头在视频领域的割据，这次收购是早在意料之中的了。</p>
+<p>那么阿里收购土豆优酷的目的是什么？</p>
+<p>先看看阿里很长一段时间的困局。你不要以为阿里就是一个淘宝家、天猫，电商购物早已是昨日黄花，现在各类电商遍地开花，还有京东这样强劲的对手，增长潜力异常有限。支付宝大家耳熟能详，敛财高手，但是在移动端和SNS的失误，这块战场已经被微信痛了一个大窟窿，形成了巨大的威胁。红包战役以及来往的失败我觉得对马云的刺激是非常之大的，阿里应该是通过内部洗牌彻底否定了之前靠阵地战攻占市场的打法，然后再通过一段时间的调整进一步确定了新的思路和打法。</p>
+<p>话说马云是一个战略布局高手，他曾经说过阿里今天的成功实际是过去战略布局的成功。阿里选择了一个极其正确的时间上市融资，用昨日黄花的辉煌换得了巨大的资本，其最终的目的还是要把这些资金投资在未来的增长点之上。从目前来看，我觉得马云的野心是极其巨大的。</p>
+<p>首先阿里巴巴看中的是娱乐文化产业，据说阿里在文化产业的投资高达240亿，加上现在收购土豆优酷的金额，更是吓死人。目前应该说阿里在数字娱乐领域实现了一个完整的产业闭环，横跨制片（阿里影业、光线传媒、华谊兄弟）、影院售票及在线选座（粤科软件）、网络点播（优酷土豆）、家庭娱乐产品及衍生品售卖（淘宝网、天猫网）。<br>引用一个分析[参考2]：</p>
+<blockquote>
+<p>对制片策划来说，电影在线观看产生的观众行为数据是最为真实的观众偏好记录。观众喜欢什么明星，喜欢什么类型；观众喜欢什么桥段，讨厌什么桥段；哪里吸引观众多次观看，哪里让观众快进；哪些电影让观众一次看完，哪些电影让观众看到一半看不下去。这些鲜活真实的数据将对影片的策划起到重要的参考作用，Netflix 利用大数据指导生产了《纸牌屋》，有了优酷的数据，阿里影业将得到中国观众的核心观影偏好。</p>
+</blockquote>
+<blockquote>
+<p>优土作为电影宣发物料投放平台的力量也不容小觑。《速度与激情 5》预告片播放量 6900 万；《变形金刚 3》预告片播放量 6700 万；《大闹天宫》预告片播放量 922 万；《匆匆那年》主题曲播放量 4049 万；《熊出没之夺宝熊兵》主题曲播放量 1200 万；《后会无期》主题曲《平凡之路》播放量达到 814 万。预告片和主题曲成为影片营销的重要手段，其播放量甚至能对判断影片最终票房起到一定的参考作用。</p>
+</blockquote>
+<blockquote>
+<p>优土作为视频播放平台可以记录观众对不同领域的不同兴趣，而这些数据可以直接被阿里作为电商平台利用。精准的用户画像可以带来精确的广告投放。电影明星同款、综艺道具同款等等衍生品的网络售卖将以更为直接和精准的方式提供给感兴趣的用户。而淘宝网作为电商平台，用户在搜索相关产品后，在登录优土时收到的相关领域视频也将大大增加优土的个性化适用性。在这种情况下，阿里集团一手掌握覆盖中国大部分活跃消费者的网络消费及视频观看数据，将更有效的建立起一张广泛而精确的用户画像。这将成为阿里对抗搜索引擎霸主百度的一张大牌。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-bbf65e5611dca5b1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大数据"></p>
+<p>有没有发现一个核心的概念？对，就是大数据。阿里目前的打法应该是希望能够利用大数据的思路，对它布局的产业形成一个完整的闭环循环，以期产生一个1+1+1..&gt;n*n的推动效果！据我了解，阿里在大数据分析上的技术投入是非常之大的，而且利用这块的优势，在传统的金融行业也进行了巨大的渗透（例如对恒生电子的收购）。而说到大数据，更加需要提及的是阿里云，作为未来企业信息化必不可少的带宽资源、计算资源（相当于生活的水电基础服务），更加是阿里首当其冲的杀器之一，也是未来获取更多行业大数据的一个棋子。</p>
+<p>最后我只想说一句话，还是有钱好，//sigh</p>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://www.baidu.com/link?url=Npuml6FM--Ri4N8mj_PhybR-ut9K8K27F8DFP0TvJwSaTTksBNLK_i56Ga-9FHn1t3z6K3amY-D6UIa33wP4tK&amp;wd=&amp;eqid=96542b480002a2b00000000456247d16" target="_blank" rel="noopener">https://www.baidu.com/link?url=Npuml6FM--Ri4N8mj_PhybR-ut9K8K27F8DFP0TvJwSaTTksBNLK_i56Ga-9FHn1t3z6K3amY-D6UIa33wP4tK&amp;wd=&amp;eqid=96542b480002a2b00000000456247d16</a></li>
+<li><a href="http://daily.zhihu.com/story/7310415?utm_campaign=in_app_share&amp;utm_medium=Android&amp;utm_source=Evernote" target="_blank" rel="noopener">http://daily.zhihu.com/story/7310415?utm_campaign=in_app_share&amp;utm_medium=Android&amp;utm_source=Evernote</a></li>
+<li><a href="http://opinion.huanqiu.com/plrd/2015-10/7703282.html" target="_blank" rel="noopener">http://opinion.huanqiu.com/plrd/2015-10/7703282.html</a><br>4.<a href="http://money.163.com/15/0213/11/AIB36EV300253B0H.html" target="_blank" rel="noopener">http://money.163.com/15/0213/11/AIB36EV300253B0H.html</a></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/11/随笔/有感于一个精于厨艺的医学女博士/" rel="next" title="有感于一个精于厨艺的医学女博士">
+                <i class="fa fa-chevron-left"></i> 有感于一个精于厨艺的医学女博士
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/23/技术/如何给Bootstrap的默认主题换肤/" rel="prev" title="如何给Bootstrap的默认主题换肤">
+                如何给Bootstrap的默认主题换肤 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wayne Deng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wayne Deng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="周末一直在想和大家分享些什么呢，是仓促的北京之行还是继续持续了一个月的番茄土豆？突然有一篇文章点亮了我的大脑，作为一个Leader希望给大家一个什么样的奔头，或者如果我们为了自己经营一家公司，它会是什么样的呢？ 除了好到没朋友的福利，还有透明的工资体系，简单人性化的薪酬计算公式，我真的很羡慕！ 下面是华丽的分割线   发1000美金奖励员工休假，还是无限期的！  ►硅谷有一撮酷得没朋友的科技公司，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这是很多人都想去的公司么？">
+<meta property="og:url" content="http://blog.waynedeng.com/2015/12/20/随笔/这是很多人都想去的公司么？/index.html">
+<meta property="og:site_name" content="Wayne Deng&#39;s Blog">
+<meta property="og:description" content="周末一直在想和大家分享些什么呢，是仓促的北京之行还是继续持续了一个月的番茄土豆？突然有一篇文章点亮了我的大脑，作为一个Leader希望给大家一个什么样的奔头，或者如果我们为了自己经营一家公司，它会是什么样的呢？ 除了好到没朋友的福利，还有透明的工资体系，简单人性化的薪酬计算公式，我真的很羡慕！ 下面是华丽的分割线   发1000美金奖励员工休假，还是无限期的！  ►硅谷有一撮酷得没朋友的科技公司，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-87a8dbd0b4e4bf3d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-c182c0aa184b585b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-e026a6993ec6ad3b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-5e56ce38fd6cb52f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-1302d2fbcd6568d0?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-25d81c6a8d7715a8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-65254bee9965cafb?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-fd2db2d640dacd83?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-11T15:35:51.110Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="这是很多人都想去的公司么？">
+<meta name="twitter:description" content="周末一直在想和大家分享些什么呢，是仓促的北京之行还是继续持续了一个月的番茄土豆？突然有一篇文章点亮了我的大脑，作为一个Leader希望给大家一个什么样的奔头，或者如果我们为了自己经营一家公司，它会是什么样的呢？ 除了好到没朋友的福利，还有透明的工资体系，简单人性化的薪酬计算公式，我真的很羡慕！ 下面是华丽的分割线   发1000美金奖励员工休假，还是无限期的！  ►硅谷有一撮酷得没朋友的科技公司，">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/294870-87a8dbd0b4e4bf3d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.waynedeng.com/2015/12/20/随笔/这是很多人都想去的公司么？/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>这是很多人都想去的公司么？ | Wayne Deng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wayne Deng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">技术、思想的点滴</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.waynedeng.com/2015/12/20/随笔/这是很多人都想去的公司么？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wayne Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wayne Deng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">这是很多人都想去的公司么？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-12-20 14:31:00" itemprop="dateCreated datePublished" datetime="2015-12-20T14:31:00+08:00">2015-12-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-11 23:35:51" itemprop="dateModified" datetime="2018-09-11T23:35:51+08:00">2018-09-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>周末一直在想和大家分享些什么呢，是仓促的北京之行还是继续持续了一个月的番茄土豆？突然有一篇文章点亮了我的大脑，作为一个Leader希望给大家一个什么样的奔头，或者如果我们为了自己经营一家公司，它会是什么样的呢？</p>
+<p>除了好到没朋友的福利，还有透明的工资体系，简单人性化的薪酬计算公式，我真的很羡慕！</p>
+<p>下面是华丽的分割线</p>
+<hr>
+<blockquote>
+<p>发1000美金奖励员工休假，还是无限期的！</p>
+</blockquote>
+<p>►硅谷有一撮酷得没朋友的科技公司，除了商业模式上的创新，他们在员工福利和公司日常运作中开的脑洞也从来没有停过。之前爆出员工超过50人后就任性地撤掉办公室的Buffer就是奇葩之一。</p>
+<p>作为一家专注社交媒体管理工具开发的公司，Buffer做起事来特立独行，经常给人一种不想在这行混了的错觉。除了在家办公这个福利，下面咱们来深八一下这家公司是如何拉仇恨的。</p>
+<p>花钱求你休假<br>还有这等好事？！</p>
+<p>什么福利比无限制休假更逆天？</p>
+<p>答案是，花钱请你无限制休假。</p>
+<p>Buffer现在的休假政策就是这样的。<strong>员工如果申请了无限制休假，公司会给1000美金的奖金。</strong></p>
+<p>首先我们来分析一下这个无限期休假意味着什么：</p>
+<p>Buffer自己给出了一个数据，平均来看，每个美国人只用到了他们一半的假期，61%的美国人在假期中还会汇报工作。搞个无限期休假，就是赤果果的和主流休假文化对着干。</p>
+<p>还有一点，即使它在制度上可行，但一个人要想休假，还得上司同意。人走了，上司对你分内工作的要求和期待度没有降低，无限期休假不就是个笑话吗。所以Buffer的无限期休假的落实还得公司管理层有觉悟。</p>
+<p>那，Buffer到底为啥推出了这项花钱让员工去休假的政策呢？</p>
+<p>说起来，这是一个订错了房间还跟中医还有一点关系的故事。</p>
+<p>其实最开始buffer的休假政策也不是这样的。每次新人进公司问到休假政策时，COO Leo都告诉他们，Buffer没有休假“制度”的，你想休多少天就休多少天。但过了两三年，管理层发现，这个“没有制度”的制度并没有起到让每个人获得适宜自己的休息时间。情况变成了，基本上没有人休假。</p>
+<p>他们就那么不知疲倦地干了三年活。</p>
+<p>然后有一天，Leo和 CEO Joel 觉得干不动了，于是他们决定去休假。这是公司成立后他们的第一次休假。他们去了墨西哥，但订错了酒店。</p>
+<p>订的酒店看上去像是有网络，但其实原始得吓人，连手机信号都没有。他们公司的员工会感激这家酒店的。没办法，两个人开始了以阅读、睡懒觉和每天11点吃早餐为关键词的休假生活。第一天，他们还会讨论公司的事，第二天，他们说得少了一些，到第三天他们已经不说公司里的事了。他们讨论哲学、看书、去沙滩上晒太阳，去健身房。Buffer已经被他们完全抛到脑后了。</p>
+<p>这次休假让他们得到了彻底的休息。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-87a8dbd0b4e4bf3d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><strong><strong>▍这次休假让他们得到了彻底的休息。</strong></strong></p>
+<p>“<strong>live smarter，not harder</strong>”，leo援引中医的预防疾病的理念，他觉得，与其问题发生后再救火，不如在问题还没有发生时就积极预防。在休假问题上他也秉承同样的逻辑，“耗干自己后再去休养，就太迟了”。</p>
+<p>回到公司后，他们开始考虑如何让从前的无限制休假能真正能推行下去。</p>
+<p>最终他们发了一个声明：</p>
+<p>1.强烈鼓励每位成员每年至少要休足一周。<br>2.公司给每位成员1000美金休假奖励。<br>3.只要团队成员休假，他们的家人每人能得到500美金的奖励。如果是4口之家的话，他们能获得2500美金的休假奖励。</p>
+<p>这笔钱对Buffer并不成为负担，他们这么做了以后，员工晒福利的帖子简直秀得不要不要的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-c182c0aa184b585b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><strong><strong>▍这个叫Colin的哥们去了冰岛，冰上摩托high得不行。</strong></strong></p>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-e026a6993ec6ad3b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><strong><strong>▍这个妹子叫carolyn，去了里斯本，葡萄牙<em>**</em></strong></strong>。<em>**</em></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-5e56ce38fd6cb52f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><strong><strong>▍<em>**</em></strong></strong>Adam 全家去了迪斯尼乐园<strong><em>**</em></strong>。<em>**</em></p>
+<hr>
+<p><strong><strong><img src="http://upload-images.jianshu.io/upload_images/294870-1302d2fbcd6568d0?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></strong></strong>▍<strong><em>**</em></strong>Tom 有机会探索了日本<strong><em>**</em></strong>。<strong><em>**</em></strong><br>Open计划<br>逆天的透明！</p>
+<p>Buffer在网上公布公司的所有资料，从股权结构、产品价格、盈利情况、募资过程以及Term Sheet。为了让更多人清晰地了解运营状况，Buffer 还会每个月发布一份对公报告，整理、总结这些信息。<br> <img src="http://upload-images.jianshu.io/upload_images/294870-25d81c6a8d7715a8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这种逆天的透明让各种数据造假的公司情何以堪啊。</p>
+<p>他们甚至<strong>公布了所有员工的工资</strong>。公司里<strong>从CEO到COO、CTO、CHO</strong>，所有的O的工资都列出来了哦。<br> <img src="http://upload-images.jianshu.io/upload_images/294870-65254bee9965cafb?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>以及<strong>公布了公司里的工资计算公式，还鼓励其他创业公司采用这个方式计算工资。</strong><br> <img src="http://upload-images.jianshu.io/upload_images/294870-fd2db2d640dacd83?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>这个公式很特别。它考虑了你的角色对公司的贡献、个人经验、家庭负担、对公司的忠诚度，个人还有权在期权和现金中做出抉择。</strong>感觉薪资不透明的公司以后没法混创业圈子了。</p>
+<p>在工资计算公式里最有杀伤力的一项是纳入了家庭负担因素。Buffer的做法是，无论是小孩，配偶、好朋友、爷爷奶奶，甚至叔叔婶婶，只要ta是依靠你的资助过活，每多一人，壕就就会在你的年薪里额外增加3000美金。简直就是一人进Buffer，全家不用愁。</p>
+<p>Buffer的Open计划被TechCrunch称为“激进的透明”。但公司的创始人认为，高度透明对公司的运作是有益的，理由是彻底的公开透明，能够在客户和员工中赢得更高的信任。事实好像也是如此，它被Fast Company 评价为最酷的公司之一，粉丝非常多，用户满意度在95%。</p>
+<p>看完了这篇，除了羡慕，是不是感觉Buffer拉的仇恨在胸中沸腾。你知道还有哪些公司有奇葩到逆天的福利吗？欢迎一起分享。</p>
+<p>本文版权归拉勾网所有，转载须注明来源及版权声明，并禁止任何形式的改动、不当使用及商业性目的转载。拉勾网对以上侵权行为保留追究法律责任的权利。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/05/随笔/《褚时健传》之“我自己的一点点总结”/" rel="next" title="《褚时健传》之“我自己的一点点总结”">
+                <i class="fa fa-chevron-left"></i> 《褚时健传》之“我自己的一点点总结”
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/24/随笔/临近年底，你真的会汇报工作么？（转）/" rel="prev" title="临近年底，你真的会汇报工作么？（转）">
+                临近年底，你真的会汇报工作么？（转） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wayne Deng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wayne Deng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
