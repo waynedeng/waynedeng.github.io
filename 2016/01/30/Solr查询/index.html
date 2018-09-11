@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在Rails使用Sunspot习惯了，可能对Solr的原生查询完全不了解，其实Sunspot对Solr的查询进行了非常完美的封装，Sunspot的查询会转换为这样的请求（参见solr.log）： INFO  - 2016-01-30 20:19:20.893; org.apache.solr.core.SolrCore; [collection1] webapp=/solr path=/selec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solr查询">
+<meta property="og:url" content="http://blog.waynedeng.com/2016/01/30/Solr查询/index.html">
+<meta property="og:site_name" content="Wayne Deng&#39;s Blog">
+<meta property="og:description" content="在Rails使用Sunspot习惯了，可能对Solr的原生查询完全不了解，其实Sunspot对Solr的查询进行了非常完美的封装，Sunspot的查询会转换为这样的请求（参见solr.log）： INFO  - 2016-01-30 20:19:20.893; org.apache.solr.core.SolrCore; [collection1] webapp=/solr path=/selec">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-261bda52bffac048.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-11T14:49:28.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Solr查询">
+<meta name="twitter:description" content="在Rails使用Sunspot习惯了，可能对Solr的原生查询完全不了解，其实Sunspot对Solr的查询进行了非常完美的封装，Sunspot的查询会转换为这样的请求（参见solr.log）： INFO  - 2016-01-30 20:19:20.893; org.apache.solr.core.SolrCore; [collection1] webapp=/solr path=/selec">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/294870-261bda52bffac048.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.waynedeng.com/2016/01/30/Solr查询/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Solr查询 | Wayne Deng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wayne Deng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">技术、思想的点滴</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.waynedeng.com/2016/01/30/Solr查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wayne Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wayne Deng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Solr查询
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-01-30 21:25:00" itemprop="dateCreated datePublished" datetime="2016-01-30T21:25:00+08:00">2016-01-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-11 22:49:28" itemprop="dateModified" datetime="2018-09-11T22:49:28+08:00">2018-09-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Rails使用Sunspot习惯了，可能对Solr的原生查询完全不了解，其实Sunspot对Solr的查询进行了非常完美的封装，Sunspot的查询会转换为这样的请求（参见solr.log）：</p>
+<pre><code>INFO  - 2016-01-30 20:19:20.893; org.apache.solr.core.SolrCore; [collection1] webapp=/solr path=/select params={fl=*+score&amp;sort=updated_at_d+desc&amp;start=0&amp;q=安徽&amp;qf=title_text+content_text&amp;wt=ruby&amp;fq=type:Bid\:\:Info&amp;fq=close_tag_i:0&amp;rows=20&amp;defType=edismax} hits=1 status=0 QTime=20
+</code></pre><p>而</p>
+<pre><code>{fl=*+score&amp;sort=updated_at_d+desc&amp;start=0&amp;q=安徽&amp;qf=title_text+content_text&amp;wt=ruby&amp;fq=type:Bid\:\:Info&amp;fq=close_tag_i:0&amp;rows=20&amp;defType=edismax}
+</code></pre><p>这个才是Solr服务器真正能够理解的查询参数，当我们遇到使用Sunspot无法解决的问题的时候，就需要直接越过Sunspot来调用Solr了。Solr接受的是HTTP协议的接口调用，因此查询的参数都是通过URL参数来进行传递，而且参数中的值都需要进行URL的编码。</p>
+<p>下面来详细介绍Solr的查询语法。</p>
+<p>Solr默认有三种查询解析器（Query Parser）：</p>
+<ul>
+<li>Standard Query Parser</li>
+<li>DisMax Query Parser</li>
+<li>Extended DisMax Query Parser (eDisMax)</li>
+</ul>
+<p>第一种是标准的Parser，最后一种是最强大的，也是Sunspot默认使用的Parser。</p>
+<p>####支持的参数：</p>
+<ul>
+<li>defType: 选择查询解析器类型，例如dismax, edismax</li>
+<li>q：主查询参数（field_name:value）</li>
+<li>sort：排序，例如score desc，price asc</li>
+<li>start：起始的数据偏移offset，用于分页</li>
+<li>raws：一次返回的数量，用于分页</li>
+<li>fq：filter query 返回结果的过滤查询</li>
+<li>fl：fields to list 返回的字段（*, score）</li>
+<li>debug：返回调试信息，debug=timing，debug=results</li>
+<li>timeAllowed：超时时间</li>
+<li>wt：response writer返回的响应格式</li>
+</ul>
+<p>下面是DisMax Parser可以使用的：</p>
+<ul>
+<li>qf：query fields，指定查询的字段，指定solr从哪些field中搜索，没有值的时候使用df</li>
+<li>mm：最小匹配比例</li>
+<li>pf：phrase fields</li>
+<li>ps：phrase slop</li>
+<li>qs：query phrase slop</li>
+</ul>
+<p>####特殊符号意义：</p>
+<ul>
+<li>?：te?t 单个字符匹配</li>
+<li>*：tes* 多个字符匹配</li>
+<li>~：fuzzy searches（模糊匹配），roam~，roams/foam/foams</li>
+<li>count:{1 TO 10}：range search 范围检索</li>
+<li>^：Boosting a Term（升级权重），jakarta^4 apache, “酒店”^4 “宾馆”</li>
+<li>^=：Constant Score with（指定分数），(description:blue OR color:blue)^=1.0 text:shoes</li>
+</ul>
+<h4 id="逻辑操作"><a href="#逻辑操作" class="headerlink" title="逻辑操作"></a>逻辑操作</h4><ul>
+<li>AND 或者 &amp;&amp;</li>
+<li>NOT 或者 !</li>
+<li>OR 或者 !!</li>
+<li>+ 必须满足</li>
+<li>- 剔除，比如 title: -安徽，返回的是title中不含有”安徽”的所有结果</li>
+</ul>
+<h4 id="回顾复习"><a href="#回顾复习" class="headerlink" title="回顾复习"></a>回顾复习</h4><pre><code>fl=*+score
+sort=updated_at_d+desc
+start=0
+q=安徽
+qf=title_text+content_text
+wt=ruby
+fq=type:Bid\:\:Info
+fq=close_tag_i:0
+rows=20
+defType=edismax
+</code></pre><p>夏书记的需求：</p>
+<pre><code>q=(酒店 OR type_i:0)
+</code></pre><p>Solr的查询可以在图形界面中进行测试：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-261bda52bffac048.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/16/我为什么会喜欢《张士超你到底把我家钥匙放在哪里了》/" rel="next" title="我为什么会喜欢《张士超你到底把我家钥匙放在哪里了》">
+                <i class="fa fa-chevron-left"></i> 我为什么会喜欢《张士超你到底把我家钥匙放在哪里了》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/22/引力波和诺贝尔哥/" rel="prev" title="引力波和诺贝尔哥">
+                引力波和诺贝尔哥 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wayne Deng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑操作"><span class="nav-number">1.</span> <span class="nav-text">逻辑操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾复习"><span class="nav-number">2.</span> <span class="nav-text">回顾复习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wayne Deng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

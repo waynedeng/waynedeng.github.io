@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一．相关的概念 Rowid的概念：rowid是一个伪列，是系统自己给加上的。 对每个表都有一个rowid的伪列，不能删除修改、插入。一旦一行数据插入数据库，则rowid在该行的生命周期内是唯一的，即即使该行产生行迁移，行的rowid也不会改变。　　 Driving Table（驱动表）：该表又称为外层表（OUTER TABLE）。这个概念用于嵌套与HASH连接中。如果驱动表row source返回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle执行计划及相关">
+<meta property="og:url" content="http://blog.waynedeng.com/2016/12/17/Oracle执行计划及相关/index.html">
+<meta property="og:site_name" content="Wayne Deng&#39;s Blog">
+<meta property="og:description" content="一．相关的概念 Rowid的概念：rowid是一个伪列，是系统自己给加上的。 对每个表都有一个rowid的伪列，不能删除修改、插入。一旦一行数据插入数据库，则rowid在该行的生命周期内是唯一的，即即使该行产生行迁移，行的rowid也不会改变。　　 Driving Table（驱动表）：该表又称为外层表（OUTER TABLE）。这个概念用于嵌套与HASH连接中。如果驱动表row source返回">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-23c3b57b3bb035cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-eef4ccd1cf7b2892.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-f4db9f65aa889a62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-4dfae665a2a584b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-2dadb7a51cf68d79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-bac97e2c2961b19b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-632a93784f5e68b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-714f5def953318e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-11T14:49:28.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle执行计划及相关">
+<meta name="twitter:description" content="一．相关的概念 Rowid的概念：rowid是一个伪列，是系统自己给加上的。 对每个表都有一个rowid的伪列，不能删除修改、插入。一旦一行数据插入数据库，则rowid在该行的生命周期内是唯一的，即即使该行产生行迁移，行的rowid也不会改变。　　 Driving Table（驱动表）：该表又称为外层表（OUTER TABLE）。这个概念用于嵌套与HASH连接中。如果驱动表row source返回">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/294870-23c3b57b3bb035cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.waynedeng.com/2016/12/17/Oracle执行计划及相关/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Oracle执行计划及相关 | Wayne Deng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wayne Deng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">技术、思想的点滴</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.waynedeng.com/2016/12/17/Oracle执行计划及相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wayne Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wayne Deng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Oracle执行计划及相关
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-17 07:05:00" itemprop="dateCreated datePublished" datetime="2016-12-17T07:05:00+08:00">2016-12-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-11 22:49:28" itemprop="dateModified" datetime="2018-09-11T22:49:28+08:00">2018-09-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>一．相关的概念</strong></p>
+<p><strong>Rowid的概念</strong>：rowid是一个伪列，是系统自己给加上的。 对每个表都有一个rowid的伪列，不能删除修改、插入。一旦一行数据插入数据库，则rowid在该行的生命周期内是唯一的，即即使该行产生行迁移，行的rowid也不会改变。　　</p>
+<p><strong>Driving Table（驱动表）</strong>：该表又称为外层表（OUTER TABLE）。这个概念用于嵌套与HASH连接中。<strong>如果驱动表row source返回较多的行数据，则对所有的后续操作有负面影响。</strong>  一般说来，是应用查询的限制条件后，返回较少行源的表作为驱动表，所以如果一个大表在WHERE条件有有限制条件（如等值限 制），则该大表作为驱动表也是合适的。　</p>
+<p><strong>Probed Table（被探查表）</strong>：该表又称为内层表（INNER TABLE）。在我们从驱动表中得到具体一行的数据后，在该表中寻找符合连接条件的行。所以该表应当为大表（实际上应该为返回较大row source的表）且相应的列上应该有索引。</p>
+<p><strong>二．oracle访问数据的存取方法</strong></p>
+<p>　<strong>1） 全表扫描（Full Table Scans， FTS）</strong>　　</p>
+<p>为实现全表扫描，Oracle读取表中所有的行，并检查每一行是否满足语句的WHERE限制条件一个多块读操作可以使一次I/O能读取多块数据块，而不是只读取一个数据块，这极大的减 少了I/O总次数，提高了系统的吞吐量，所以利用多块读的方法可以十分高效地实现全表扫描，而且只有在全表扫描的情况下才能使用多块读操作。在这种访问模 式下，每个数据块只被读一次。　</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-23c3b57b3bb035cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="全表扫描"></p>
+<p>　<strong>2） 通过ROWID的表存取（Table Access by ROWID或rowid lookup）</strong></p>
+<p>行的ROWID指出了该行所在的数据文件、数据块以及行在该块中的位置，所以通过ROWID来存取数据可以快速定位到目标数据上，是Oracle存取单行数据的最快方法。　　这种存取方法不会用到多块读操作，一次I/O只能读取一个数据块。我们会经常在执行计划中看到该存取方法，如通过索引查询数据。　　使用ROWID存取的方法： </p>
+<pre><code>　　SQL&gt; explain plan for select * from dept where rowid = &apos;&apos;AAAAyGAADAAAAATAAF&apos;&apos;；
+</code></pre><p>　　<strong>3）索引扫描（Index Scan或index lookup）</strong></p>
+<p>　　我们先通过index查找到数据对应的rowid值（对于非唯一索引可能返回多个rowid值），然后根据rowid直接从表中得到具体的数据，这 种查找方式称为索引扫描或索引查找（index lookup）。如果表比较大，则其数据不可能全在内存中，所以其I/O很有可能是物理I/O，这 是一个机械操作，相对逻辑I/O来说，是极其费时间的。所以如果多大表进行索引扫描，取出的数据如果大于总量的5% —— 10%，使用索引扫描会效率下降很多。</p>
+<p>BY INDEX ROWID<br><img src="http://upload-images.jianshu.io/upload_images/294870-eef4ccd1cf7b2892.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BY INDEX ROWID"></p>
+<p>RANGE SCAN</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-f4db9f65aa889a62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RANGE SCAN"></p>
+<p>排序的时候也需要索引，如果没有也可能会引发FULL TABLE ACCESS。<br><img src="http://upload-images.jianshu.io/upload_images/294870-4dfae665a2a584b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><strong>三、表之间的连接</strong></p>
+<p>Oracle中，两个表之间关联JOIN查询的话，有很多种方式，比较常用的有：</p>
+<ul>
+<li>排序 - - 合并连接（Sort Merge Join （SMJ） ）　　</li>
+<li>嵌套循环（Nested Loops （NL） ）　　</li>
+<li>哈希连接（Hash Join）</li>
+</ul>
+<p>最常见的是后两种。<br>简单的一个例子：</p>
+<pre><code>select  *
+from cities
+inner join provinces on cities.province_id = provinces.id
+where provinces.id &lt; 100
+</code></pre><p>嵌套循环（Nested Loops （NL） ），就是先做provinces检索，然后对每一个provinces的记录的id，取循环取cities的数据。</p>
+<pre><code>provinces id = 1 -----&gt; cities
+provinces id = 2-----&gt; cities
+provinces id = 3 -----&gt; cities
+provinces id = 4 -----&gt; cities
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/294870-2dadb7a51cf68d79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="嵌套循环（Nested Loops （NL） ）"></p>
+<p>所以，如果数据量很大的话，嵌套循环是一个比较耗时的操作，<strong>所以在join的过程中，一般而言千万不要把数据量大的表设置为驱动表。</strong></p>
+<p>刚刚的例子，对比一下，如果我强制使用数据量大一点的cities来做驱动表，COST显著由4变成了116。</p>
+<blockquote>
+<p>注意SQL语句中的/<em>+ leading(cities) use_nl(provinces) </em>/，虽然是注释语句，但是在Oracle可以起到修改执行计划的作用。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-bac97e2c2961b19b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="强制指定驱动表"></p>
+<p>当然针对嵌套循环的不足，Oracle引入了依靠哈希连接（Hash Join），这种方式通过哈希运算来得到连接结果集的表连接方法，具体的算法不深究，它主要是避开了嵌套循环的多次查询，一次性取出足够的数据进行连接运算，大大提升了查询的效率，当然内存的消耗也会大大增加。哈希连接中驱动表的顺序是也是非常重要的，性能差别也大。据我观察，业务中，哈希连接的性能通常要优于嵌套循环，但也不是绝对。</p>
+<p>这是上面的例子，强制使用哈希连接的方式来执行：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-632a93784f5e68b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="强制使用哈希连接"></p>
+<p>在使用的过程中，Oracle会非常智能的完成执行计划的优化工作，根据成本最小化的原则来确定具体使用哪种方式来操作，但是在很多极端情况，Oracle选择的方式未必是最佳的。这就要求我们在写SQL的时候思路逻辑要非常清晰，不要犯一些基本的错误，就能大大避免异常情况。</p>
+<p>另外需要提醒的是NULL要慎用：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-714f5def953318e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="NULL会导致全表检索"></p>
+<p><strong>四、思考题</strong></p>
+<p>最后给大家一个思考题，看一下下面这个，来自于业务中的SQL（被我简化了），看上去写的很规整很漂亮，有没有什么问题？</p>
+<pre><code>select distinct brands.*
+from product_prices
+inner join products on products.id = product_prices.product_id
+inner join brands on brands.id = products.brand_id
+inner join product_batches on product_prices.batch_id = product_batches.id
+where 
+  (quotation_batches.id =289859 OR quotation_batches.group_id =289859)
+  and products.publish_stage IN (0,1)
+  and brands.status NOT IN (1,2)
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/10/关于产品职位的思考/" rel="next" title="关于产品职位的思考">
+                <i class="fa fa-chevron-left"></i> 关于产品职位的思考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/28/Mac下不用重复输入ssh-key的密码/" rel="prev" title="Mac下不用重复输入ssh-key的密码">
+                Mac下不用重复输入ssh-key的密码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wayne Deng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wayne Deng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

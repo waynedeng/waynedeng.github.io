@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="问题Gem版本：rails 4.2.5activerecord-oracle_enhanced-adapter  1.6.6 两个模型： class ProjectTable &amp;lt; ActiveRecord::Base      establish_connection :projects         ... end  class TrialApplication &amp;lt; Project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一个BUG的解决过程">
+<meta property="og:url" content="http://blog.waynedeng.com/2016/03/28/记一个BUG的解决过程/index.html">
+<meta property="og:site_name" content="Wayne Deng&#39;s Blog">
+<meta property="og:description" content="问题Gem版本：rails 4.2.5activerecord-oracle_enhanced-adapter  1.6.6 两个模型： class ProjectTable &amp;lt; ActiveRecord::Base      establish_connection :projects         ... end  class TrialApplication &amp;lt; Project">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-11T14:49:28.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一个BUG的解决过程">
+<meta name="twitter:description" content="问题Gem版本：rails 4.2.5activerecord-oracle_enhanced-adapter  1.6.6 两个模型： class ProjectTable &amp;lt; ActiveRecord::Base      establish_connection :projects         ... end  class TrialApplication &amp;lt; Project">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.waynedeng.com/2016/03/28/记一个BUG的解决过程/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>记一个BUG的解决过程 | Wayne Deng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wayne Deng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">技术、思想的点滴</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.waynedeng.com/2016/03/28/记一个BUG的解决过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wayne Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wayne Deng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记一个BUG的解决过程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-28 22:19:00" itemprop="dateCreated datePublished" datetime="2016-03-28T22:19:00+08:00">2016-03-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-11 22:49:28" itemprop="dateModified" datetime="2018-09-11T22:49:28+08:00">2018-09-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Gem版本：<br>rails 4.2.5<br>activerecord-oracle_enhanced-adapter  1.6.6</p>
+<p>两个模型：</p>
+<pre><code>class ProjectTable &lt; ActiveRecord::Base
+
+    establish_connection :projects
+        ...
+end
+
+class TrialApplication &lt; ProjectTable
+
+  self.table_name =  &apos;trial_applications&apos;
+
+end
+</code></pre><p>BUG：<br>TrialApplication.create的时候，ID本来应该是取自序列trial_application_seq.nextval，但是发现完全不对，创建数据的ID与已有的ID发生冲突，引发ORA-00001报错！</p>
+<h3 id="追踪"><a href="#追踪" class="headerlink" title="追踪"></a>追踪</h3><blockquote>
+<p>初步怀疑</p>
+</blockquote>
+<p>因为在Rails中，Oracle和Mysql有点不同，Mysql的主键ID是自增长的，而Oracle一般都是通过序列来获取，一开始就怀疑新版的activerecord-oracle_enhanced-adapter 是否有调整，造成通过序列获取ID出现了问题。于是开始追踪activerecord-oracle_enhanced-adapter 的源代码。</p>
+<blockquote>
+<p>开始追踪</p>
+</blockquote>
+<p>于是我通过 <em>sequence</em> 这个关键词在activerecord-oracle_enhanced-adapter 的源代码中进行搜索，查到了这个方法（activerecord-oracle_enhanced-adapter-1.6.6/lib/active_record/connection_adapters/oracle_enhanced/database_statements.rb）：</p>
+<pre><code># Executes an INSERT statement and returns the new record&apos;s ID
+def insert_sql(sql, name = nil, pk = nil, id_value = nil, sequence_name = nil) #:nodoc:
+  # if primary key value is already prefetched from sequence
+  # or if there is no primary key
+  if id_value || pk.nil?
+    execute(sql, name)
+    return id_value
+  end
+
+  sql_with_returning = sql + @connection.returning_clause(quote_column_name(pk))
+  log(sql, name) do
+    @connection.exec_with_returning(sql_with_returning)
+  end
+end        
+
+# New method in ActiveRecord 3.1
+# Will add RETURNING clause in case of trigger generated primary keys
+def sql_for_insert(sql, pk, id_value, sequence_name, binds)
+  unless id_value || pk.nil? || (defined?(CompositePrimaryKeys) &amp;&amp; pk.kind_of?(CompositePrimaryKeys::CompositeKeys))
+    sql = &quot;#{sql} RETURNING #{quote_column_name(pk)} INTO :returning_id&quot;
+    returning_id_col = new_column(&quot;returning_id&quot;, nil, Type::Value.new, &quot;number&quot;, true, &quot;dual&quot;, true, true)
+    (binds = binds.dup) &lt;&lt; [returning_id_col, nil]
+  end
+  [sql, binds]
+end
+</code></pre><p>这两个方法很明显就是生成insert的sql的方法，应该就是倒推过来最接近数据库操作的步骤，于是我在两个方法中加上了输出：</p>
+<pre><code>puts [sql, id_value, sequence_name]
+</code></pre><p>然后返回控制台中执行TrialApplication.create操作，结果返回的是：</p>
+<pre><code>[&quot;INSERT INTO \&quot;TRIAL_APPLICATIONS\&quot; (...)&quot;) VALUES (:a1, :a2, :a3, :a4, :a5, :a6, :a7)&quot;, 123456, nil]
+</code></pre><p>很明显，这个时候id_value早就已经取好值了，很明显，还要继续追溯这个id_value是在哪取出来的。</p>
+<blockquote>
+<p>继续深挖</p>
+</blockquote>
+<p>activerecord-oracle_enhanced-adapter 的源代码挖了一遍，没有收获，于是开始搜索active_record，还是用sequence关键词，发现这个方法（activerecord-4.2.5/lib/active_record/connection_adapters/abstract/database_statements.rb ）：</p>
+<pre><code># Returns the last auto-generated ID from the affected table.
+#
+# +id_value+ will be returned unless the value is nil, in
+# which case the database will attempt to calculate the last inserted
+# id and return that value.
+#
+# If the next id was calculated in advance (as in Oracle), it should be
+# passed in as +id_value+.
+def insert(arel, name = nil, pk = nil, id_value = nil, sequence_name = nil, binds = [])
+  puts &apos;insert&apos;   #这个就是我加入的调试的代码了
+  puts [name, pk, id_value, sequence_name, binds].inspect
+  sql, binds = sql_for_insert(to_sql(arel, binds), pk, id_value, sequence_name, binds)
+  value      = exec_insert(sql, name, binds, pk, sequence_name)
+  id_value || last_inserted_id(value)
+end
+</code></pre><p>注释里面写的很清楚了，<em>If the next id was calculated in advance (as in Oracle)</em>，在Oracle中，id是会预先计算出来的了，加上调试的代码，验证，果然在这一步id_value也早就计算出来，还是错误的！</p>
+<blockquote>
+<p>最后的希望</p>
+</blockquote>
+<p>继续检索，终于找到了这个方法（activerecord-4.2.5/lib/active_record/relation.rb），</p>
+<pre><code>def insert(values) # :nodoc:
+  primary_key_value = nil
+
+  if primary_key &amp;&amp; Hash === values
+    primary_key_value = values[values.keys.find { |k|
+      k.name == primary_key
+    }]
+
+    if !primary_key_value &amp;&amp; connection.prefetch_primary_key?(klass.table_name)
+      puts klass.sequence_name
+      primary_key_value = connection.next_sequence_value(klass.sequence_name)
+      puts &quot;primary_key_value=#{primary_key_value}&quot;
+      values[klass.arel_table[klass.primary_key]] = primary_key_value
+    end
+  end
+  ....
+</code></pre><p>connection.next_sequence_value(klass.sequence_name)，获取序列的下一个值的方法就是它了，说明id_value就是在这里取出来的。</p>
+<p>加上调试的输出，结果一看：<br><strong>klass.sequence_name居然不是trial_applications_seq，而是employees_seq！问题终于找到了！</strong></p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>原来在ProjectTable中，新版的activerecord会预先加载模型对应的table的信息，避免报错我加上了self.table_name = ‘employees’，指定了一个table。</p>
+<p>而TrialApplication，就悲催的延续了ProjectTable的设置，虽然self.table_name =  ‘trial_applications’修改了表名，序列sequence_name没有修改！解决起来就很简单了：</p>
+<pre><code>class TrialApplication &lt; ProjectTable
+
+  self.table_name =  &apos;trial_applications&apos;
+  self.sequence_name = &apos;trial_applications_seq&apos;
+end
+</code></pre><p>加上 self.sequence_name = ‘trial_applications_seq’搞定！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/12/记一场钢琴独奏音乐会/" rel="next" title="记一场钢琴独奏音乐会">
+                <i class="fa fa-chevron-left"></i> 记一场钢琴独奏音乐会
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/29/使用Docker搭建开发环境（windows篇）/" rel="prev" title="使用Docker搭建开发环境（windows篇）">
+                使用Docker搭建开发环境（windows篇） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wayne Deng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追踪"><span class="nav-number">2.</span> <span class="nav-text">追踪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wayne Deng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
