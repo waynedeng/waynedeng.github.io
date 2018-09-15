@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Wayne Deng&#39;s Blog</title>
+  
+  <subtitle>技术、思想的点滴</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.waynedeng.com/"/>
+  <updated>2018-09-15T15:11:55.825Z</updated>
+  <id>http://blog.waynedeng.com/</id>
+  
+  <author>
+    <name>Wayne Deng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《率性而活》——认真的力量</title>
+    <link href="http://blog.waynedeng.com/2018/09/15/%E9%9A%8F%E7%AC%94/%E3%80%8A%E7%8E%87%E6%80%A7%E8%80%8C%E6%B4%BB%E3%80%8B%E2%80%94%E2%80%94%E8%AE%A4%E7%9C%9F%E7%9A%84%E5%8A%9B%E9%87%8F/"/>
+    <id>http://blog.waynedeng.com/2018/09/15/随笔/《率性而活》——认真的力量/</id>
+    <published>2018-09-15T14:49:00.000Z</published>
+    <updated>2018-09-15T15:11:55.825Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;img src=&quot;/2018/09/15/随笔/《率性而活》——认真的力量/2018-09-15-23-00-25.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="电影" scheme="http://blog.waynedeng.com/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>帮助应届生、年轻程序员快速成长的12个锦囊（转）</title>
+    <link href="http://blog.waynedeng.com/2017/09/10/%E6%8A%80%E6%9C%AF/%E5%B8%AE%E5%8A%A9%E5%BA%94%E5%B1%8A%E7%94%9F%E3%80%81%E5%B9%B4%E8%BD%BB%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%AB%E9%80%9F%E6%88%90%E9%95%BF%E7%9A%8412%E4%B8%AA%E9%94%A6%E5%9B%8A%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
+    <id>http://blog.waynedeng.com/2017/09/10/技术/帮助应届生、年轻程序员快速成长的12个锦囊（转）/</id>
+    <published>2017-09-10T09:00:00.000Z</published>
+    <updated>2018-09-11T15:54:15.695Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;当你刚学会走的时候，别人已经在跑了；当你还像学生一样被动吸收时，别人已经在独当一面了；当你还在干基础的事情，别人已经在拿高薪水带小团队了。问题的关键是：别人是怎么做到的？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>WikiHow——关于如何xxx的维基百科</title>
+    <link href="http://blog.waynedeng.com/2017/06/24/%E9%9A%8F%E7%AC%94/WikiHow%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95xxx%E7%9A%84%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91/"/>
+    <id>http://blog.waynedeng.com/2017/06/24/随笔/WikiHow——关于如何xxx的维基百科/</id>
+    <published>2017-06-24T08:25:00.000Z</published>
+    <updated>2018-09-11T15:54:15.701Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;原谅我的标题党。&lt;a href=&quot;http://zh.wikihow.com/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>让RescueTime来解救你的时间吧</title>
+    <link href="http://blog.waynedeng.com/2017/06/16/GTD%E6%95%88%E7%8E%87/%E8%AE%A9RescueTime%E6%9D%A5%E8%A7%A3%E6%95%91%E4%BD%A0%E7%9A%84%E6%97%B6%E9%97%B4%E5%90%A7/"/>
+    <id>http://blog.waynedeng.com/2017/06/16/GTD效率/让RescueTime来解救你的时间吧/</id>
+    <published>2017-06-16T05:06:00.000Z</published>
+    <updated>2018-09-11T15:54:15.678Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;时间管理很重要的一步，就是要梳理自己的时间分配，是否把时间投入在最值得投入的事情上。所以我们经常需要进行时间花费的记录，9点到10点干了些什么，10点到11点又干了些什么，和财务记账一样，当然如果养成了良好的习惯，记录能让你受益匪浅，但是也有像我这样的懒人，觉得手动记录也是
+        
+      
+    
+    </summary>
+    
+      <category term="GTD效率" scheme="http://blog.waynedeng.com/categories/GTD%E6%95%88%E7%8E%87/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Anki——让记忆更容易和高效</title>
+    <link href="http://blog.waynedeng.com/2017/05/29/GTD%E6%95%88%E7%8E%87/Anki%E2%80%94%E2%80%94%E8%AE%A9%E8%AE%B0%E5%BF%86%E6%9B%B4%E5%AE%B9%E6%98%93%E5%92%8C%E9%AB%98%E6%95%88/"/>
+    <id>http://blog.waynedeng.com/2017/05/29/GTD效率/Anki——让记忆更容易和高效/</id>
+    <published>2017-05-29T15:20:00.000Z</published>
+    <updated>2018-09-11T15:54:15.675Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Anki是一个使记忆变得容易的学习软件。因为它是一个自定义多功能的记忆方式，可以大大减少你的学习时间，也可以大大提高 你的学习容量.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://apps.ankiweb.net/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="GTD效率" scheme="http://blog.waynedeng.com/categories/GTD%E6%95%88%E7%8E%87/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云表格存储笔记</title>
+    <link href="http://blog.waynedeng.com/2017/05/16/%E6%8A%80%E6%9C%AF/%E9%98%BF%E9%87%8C%E4%BA%91%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://blog.waynedeng.com/2017/05/16/技术/阿里云表格存储笔记/</id>
+    <published>2017-05-16T10:39:00.000Z</published>
+    <updated>2018-09-11T15:54:15.696Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;阿里云的表格存储（Table Store）是一种NoSQL 数据存储服务，提供海量结构化数据的存储和实时访问。&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Calm——发现冥想的力量</title>
+    <link href="http://blog.waynedeng.com/2017/04/12/GTD%E6%95%88%E7%8E%87/Calm%E2%80%94%E2%80%94%E5%8F%91%E7%8E%B0%E5%86%A5%E6%83%B3%E7%9A%84%E5%8A%9B%E9%87%8F/"/>
+    <id>http://blog.waynedeng.com/2017/04/12/GTD效率/Calm——发现冥想的力量/</id>
+    <published>2017-04-12T12:28:00.000Z</published>
+    <updated>2018-09-11T15:54:15.674Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这是一个力推的APP，虽然有内付费，不过也不影响使用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;红尘纷乱，有时真想一头扎到大海里理清思绪。Calm
+        
+      
+    
+    </summary>
+    
+      <category term="GTD效率" scheme="http://blog.waynedeng.com/categories/GTD%E6%95%88%E7%8E%87/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mac下安装PostgreSQL的简便方法</title>
+    <link href="http://blog.waynedeng.com/2017/03/29/%E6%8A%80%E6%9C%AF/Mac%E4%B8%8B%E5%AE%89%E8%A3%85PostgreSQL%E7%9A%84%E7%AE%80%E4%BE%BF%E6%96%B9%E6%B3%95/"/>
+    <id>http://blog.waynedeng.com/2017/03/29/技术/Mac下安装PostgreSQL的简便方法/</id>
+    <published>2017-03-29T08:36:00.000Z</published>
+    <updated>2018-09-11T15:54:15.687Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Mac下安装PostgreSQL，可以使用brew，不过下载要翻墙好麻烦。还有一个方便的方法，就是使用&lt;a href=&quot;http://postgresapp.com/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阿里前CEO卫哲：马云半夜打电话，使我看清B2B的真正本质（转）</title>
+    <link href="http://blog.waynedeng.com/2017/03/28/%E9%9A%8F%E7%AC%94/%E9%98%BF%E9%87%8C%E5%89%8DCEO%E5%8D%AB%E5%93%B2%EF%BC%9A%E9%A9%AC%E4%BA%91%E5%8D%8A%E5%A4%9C%E6%89%93%E7%94%B5%E8%AF%9D%EF%BC%8C%E4%BD%BF%E6%88%91%E7%9C%8B%E6%B8%85B2B%E7%9A%84%E7%9C%9F%E6%AD%A3%E6%9C%AC%E8%B4%A8%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
+    <id>http://blog.waynedeng.com/2017/03/28/随笔/阿里前CEO卫哲：马云半夜打电话，使我看清B2B的真正本质（转）/</id>
+    <published>2017-03-28T12:54:00.000Z</published>
+    <updated>2018-09-11T15:54:15.735Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;虽然很长，但产品必读！&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>“活儿好”是一种怎样的体验（转）</title>
+    <link href="http://blog.waynedeng.com/2017/03/15/GTD%E6%95%88%E7%8E%87/%E2%80%9C%E6%B4%BB%E5%84%BF%E5%A5%BD%E2%80%9D%E6%98%AF%E4%B8%80%E7%A7%8D%E6%80%8E%E6%A0%B7%E7%9A%84%E4%BD%93%E9%AA%8C%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
+    <id>http://blog.waynedeng.com/2017/03/15/GTD效率/“活儿好”是一种怎样的体验（转）/</id>
+    <published>2017-03-15T01:47:00.000Z</published>
+    <updated>2018-09-11T15:54:15.678Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;职场上如何提升职场竞争力，这几年我自己的经验，本质就是简单粗暴的两条—— &lt;strong&gt; 1. 出活快；2. 出活好。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="GTD效率" scheme="http://blog.waynedeng.com/categories/GTD%E6%95%88%E7%8E%87/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rails对于Cookie的加密和解密方法</title>
+    <link href="http://blog.waynedeng.com/2017/03/12/%E6%8A%80%E6%9C%AF/Rails%E5%AF%B9%E4%BA%8ECookie%E7%9A%84%E5%8A%A0%E5%AF%86%E5%92%8C%E8%A7%A3%E5%AF%86%E6%96%B9%E6%B3%95/"/>
+    <id>http://blog.waynedeng.com/2017/03/12/技术/Rails对于Cookie的加密和解密方法/</id>
+    <published>2017-03-12T10:42:00.000Z</published>
+    <updated>2018-09-11T15:54:15.690Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Rails的Session默认是存储在Cookies中的，Cookies显性存储在浏览器中，因此基于安全性的考虑，对Cookies进行加密是非常有必要的。&lt;/p&gt;
+&lt;p&gt;比如session的数据{user_id:
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>技术大牛养成指南，一篇不鸡汤的成功学实践（转）</title>
+    <link href="http://blog.waynedeng.com/2017/03/02/%E9%9A%8F%E7%AC%94/%E6%8A%80%E6%9C%AF%E5%A4%A7%E7%89%9B%E5%85%BB%E6%88%90%E6%8C%87%E5%8D%97%EF%BC%8C%E4%B8%80%E7%AF%87%E4%B8%8D%E9%B8%A1%E6%B1%A4%E7%9A%84%E6%88%90%E5%8A%9F%E5%AD%A6%E5%AE%9E%E8%B7%B5%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
+    <id>http://blog.waynedeng.com/2017/03/02/随笔/技术大牛养成指南，一篇不鸡汤的成功学实践（转）/</id>
+    <published>2017-03-02T14:09:00.000Z</published>
+    <updated>2018-09-11T15:54:15.719Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;有的人想成为大牛，却不曾为此努力。有的人辛苦耕耘，却收获寥寥。很多时候，你跟成功的差距并不是能力，也不是运气，或许只是正确的方法？这是一篇不鸡汤的成功学指南，如果你相信且愿意坚持尝试，未必帮不到你！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>专治人生疑难杂症的《小说药丸》，人人适用（转）</title>
+    <link href="http://blog.waynedeng.com/2017/01/20/%E9%9A%8F%E7%AC%94/%E4%B8%93%E6%B2%BB%E4%BA%BA%E7%94%9F%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E7%9A%84%E3%80%8A%E5%B0%8F%E8%AF%B4%E8%8D%AF%E4%B8%B8%E3%80%8B%EF%BC%8C%E4%BA%BA%E4%BA%BA%E9%80%82%E7%94%A8%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
+    <id>http://blog.waynedeng.com/2017/01/20/随笔/专治人生疑难杂症的《小说药丸》，人人适用（转）/</id>
+    <published>2017-01-20T06:23:00.000Z</published>
+    <updated>2018-09-11T15:54:15.706Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;与这本书相遇，实际是因为一次图书促销的时候凑单看到。但收到货以后，只感到万分惊喜。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;迷茫？焦虑？愤怒？拖延症？感冒？头痛？痔疮？怀孕？&lt;/li&gt;
+&lt;li&gt;爱上不该爱的人？缺乏撩人技巧？不会再爱了？性生活太频繁？&lt;/li&gt;
+&lt;li&gt;犬儒主义？自我中心
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MooseFS在Ubuntu16下的安装</title>
+    <link href="http://blog.waynedeng.com/2017/01/16/%E6%8A%80%E6%9C%AF/MooseFS%E5%9C%A8Ubuntu16%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <id>http://blog.waynedeng.com/2017/01/16/技术/MooseFS在Ubuntu16下的安装/</id>
+    <published>2017-01-16T08:07:00.000Z</published>
+    <updated>2018-09-11T15:54:15.688Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/294870-01918e84779141b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Solr中Queries和Filters的区别</title>
+    <link href="http://blog.waynedeng.com/2017/01/14/%E6%8A%80%E6%9C%AF/Solr%E4%B8%ADQueries%E5%92%8CFilters%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://blog.waynedeng.com/2017/01/14/技术/Solr中Queries和Filters的区别/</id>
+    <published>2017-01-14T08:31:00.000Z</published>
+    <updated>2018-09-11T15:54:15.691Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;访问Solr，使用&lt;a href=&quot;https://github.com/sunspot/sunspot&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sunspot&lt;/a&gt;和&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Solr的Facet优化</title>
+    <link href="http://blog.waynedeng.com/2017/01/13/%E6%8A%80%E6%9C%AF/Solr%E7%9A%84Facet%E4%BC%98%E5%8C%96/"/>
+    <id>http://blog.waynedeng.com/2017/01/13/技术/Solr的Facet优化/</id>
+    <published>2017-01-13T03:29:00.000Z</published>
+    <updated>2018-09-11T15:54:15.692Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这两周一直奋斗在一个有4亿条（200G）数据的项目当中，需求是需要快速的对数据进行检索和Facet/Group。&lt;/p&gt;
+&lt;p&gt;搭建了3台Solr服务器（4核8G）做Cloud，分了3个Shard，2个Replication，按道理性能应该不会差，实际跑下来，普通的检索完全
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于产品经理的讨论续</title>
+    <link href="http://blog.waynedeng.com/2017/01/06/%E9%9A%8F%E7%AC%94/%E5%85%B3%E4%BA%8E%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E7%9A%84%E8%AE%A8%E8%AE%BA%E7%BB%AD/"/>
+    <id>http://blog.waynedeng.com/2017/01/06/随笔/关于产品经理的讨论续/</id>
+    <published>2017-01-06T05:00:00.000Z</published>
+    <updated>2018-09-11T15:54:15.709Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;作者：John&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看了你和Crystal的文章。其实我觉得boss和好的产品经理之间没有必然联系。大家看到的乔布斯、马化腾甚至比尔盖茨都是好的产品经理，但是其实成百上千倒闭了的公司的老板是劣质的产品经理，还有
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mac下不用重复输入ssh-key的密码</title>
+    <link href="http://blog.waynedeng.com/2016/12/28/%E6%8A%80%E6%9C%AF/Mac%E4%B8%8B%E4%B8%8D%E7%94%A8%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5ssh-key%E7%9A%84%E5%AF%86%E7%A0%81/"/>
+    <id>http://blog.waynedeng.com/2016/12/28/技术/Mac下不用重复输入ssh-key的密码/</id>
+    <published>2016-12-28T07:02:00.000Z</published>
+    <updated>2018-09-11T15:54:15.681Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;重装系统，复用以前的SSH key，发现每次调用这个Key都要输入Key的密码，很繁琐，以前不是这样的哦。&lt;/p&gt;
+&lt;p&gt;更新代码、SSH服务器总是提示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Enter passphrase for .../id_rsa:
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Oracle执行计划及相关</title>
+    <link href="http://blog.waynedeng.com/2016/12/17/%E6%8A%80%E6%9C%AF/Oracle%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E5%8F%8A%E7%9B%B8%E5%85%B3/"/>
+    <id>http://blog.waynedeng.com/2016/12/17/技术/Oracle执行计划及相关/</id>
+    <published>2016-12-16T23:05:00.000Z</published>
+    <updated>2018-09-11T15:54:15.690Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;一．相关的概念&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rowid的概念&lt;/strong&gt;：rowid是一个伪列，是系统自己给加上的。
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于产品职位的思考</title>
+    <link href="http://blog.waynedeng.com/2016/12/10/%E9%9A%8F%E7%AC%94/%E5%85%B3%E4%BA%8E%E4%BA%A7%E5%93%81%E8%81%8C%E4%BD%8D%E7%9A%84%E6%80%9D%E8%80%83/"/>
+    <id>http://blog.waynedeng.com/2016/12/10/随笔/关于产品职位的思考/</id>
+    <published>2016-12-10T15:31:00.000Z</published>
+    <updated>2018-09-11T15:54:15.709Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;产品经理（PM）这个职位随着互联网的兴盛而流行起来，也吸引了很多希望通过产品改变世界的小伙伴们投身于产品的职业发展当中。不过产品这个职位在工作中覆盖的面非常广，从需求分析、产品设计、项目跟进再到产品运营，如果是一个互联网公司，基本上覆盖了公司业务的所有方面，所以也有人说产品
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+</feed>
