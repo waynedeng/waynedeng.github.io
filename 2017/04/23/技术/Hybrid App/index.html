@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="avse8oTKT3IeReCKpNtl2OXpFyvtINh7ePb-NB5US7g" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Hybrid App（混合模式移动应用）是指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。  Hybrid App开发框架有很多，在此做了一个记录。这里没有覆盖所有的框架，而且有一定的偏好，更多的希望能找到一个适合我们技术背景的选择。 国内一、AppCan http://www.appcan.cn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hybrid App">
+<meta property="og:url" content="http://blog.waynedeng.com/2017/04/23/技术/Hybrid App/index.html">
+<meta property="og:site_name" content="Wayne Deng&#39;s Blog">
+<meta property="og:description" content="Hybrid App（混合模式移动应用）是指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。  Hybrid App开发框架有很多，在此做了一个记录。这里没有覆盖所有的框架，而且有一定的偏好，更多的希望能找到一个适合我们技术背景的选择。 国内一、AppCan http://www.appcan.cn">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-dab7d6ad4853d35d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-9245b8f571166cfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-275052259d161e00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-4b72c9208470fa0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-b5ad8d31a77322eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-7ac6f9a8adc2c85a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-3dde091a31de77cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-bfb6d8b05844e182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-df8b90d431d8cc8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294870-bbcb9a76688a50b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-15T15:44:49.879Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hybrid App">
+<meta name="twitter:description" content="Hybrid App（混合模式移动应用）是指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。  Hybrid App开发框架有很多，在此做了一个记录。这里没有覆盖所有的框架，而且有一定的偏好，更多的希望能找到一个适合我们技术背景的选择。 国内一、AppCan http://www.appcan.cn">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/294870-dab7d6ad4853d35d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wayne Deng's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://blog.waynedeng.com/2017/04/23/技术/Hybrid App/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Hybrid App | Wayne Deng's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?115f56ab7956035f3b03c0576e2ba943";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wayne Deng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">技术、思想的点滴</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.waynedeng.com/2017/04/23/技术/Hybrid App/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wayne Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wayne Deng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hybrid App
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-23 19:57:00" itemprop="dateCreated datePublished" datetime="2017-04-23T19:57:00+08:00">2017-04-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-15 23:44:49" itemprop="dateModified" datetime="2018-09-15T23:44:49+08:00">2018-09-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Hybrid App（混合模式移动应用）是指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-dab7d6ad4853d35d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="对比"></p>
+<p>Hybrid App开发框架有很多，在此做了一个记录。这里没有覆盖所有的框架，而且有一定的偏好，更多的希望能找到一个适合我们技术背景的选择。</p>
+<h2 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h2><h3 id="一、AppCan-http-www-appcan-cn"><a href="#一、AppCan-http-www-appcan-cn" class="headerlink" title="一、AppCan http://www.appcan.cn/"></a>一、AppCan <a href="http://www.appcan.cn/" target="_blank" rel="noopener">http://www.appcan.cn/</a></h3><p>号称国内 [Hybrid混合开发]、[移动平台]、[移动云平台]的倡导者&amp;领导者，从网站上来看有不少政企的客户。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-9245b8f571166cfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>AppCan Javascript SDK： 是appcan根据自己的需求封装的一个开发库，对底层的接口进行更高层的封装，能让开发者更快速、 高效的开发更加稳定的项目，该库依赖backbonejs、zeptojs、underscorejs默认打包在基础库中，开发者 不需要进行额外的引用，另外在该库的基础上提供了丰富的插件，能让开发者更高效的开发app。</p>
+<p>IDE：AppCan IDE是基于Eclipse定制的移动集成开发环境，专为无Native开发经验的HTML开发人员设计。</p>
+<p>小结：该有的都有，UI的文档感觉比较简单。</p>
+<h3 id="二、DCloud-http-dcloud-io"><a href="#二、DCloud-http-dcloud-io" class="headerlink" title="二、DCloud  http://dcloud.io/"></a>二、DCloud  <a href="http://dcloud.io/" target="_blank" rel="noopener">http://dcloud.io/</a></h3><p><img src="http://upload-images.jianshu.io/upload_images/294870-275052259d161e00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<ul>
+<li>HBuilder</li>
+</ul>
+<p>HTML5 IDE，飞速编码的极客工具，手指爽，眼睛爽下载。</p>
+<ul>
+<li>5+Runtime</li>
+</ul>
+<p>增强版的手机浏览器引擎，让HTML5达到原生水平！原生40万API随意调用。</p>
+<ul>
+<li>MUI</li>
+</ul>
+<p>最接近原生App体验的前端框架。</p>
+<p>小结：感觉对开发非常友好，突出的特点的性能。IDE、UI都很齐全、</p>
+<h3 id="三、APICloud-http-www-apicloud-com"><a href="#三、APICloud-http-www-apicloud-com" class="headerlink" title="三、APICloud  http://www.apicloud.com/"></a>三、APICloud  <a href="http://www.apicloud.com/" target="_blank" rel="noopener">http://www.apicloud.com/</a></h3><p><img src="http://upload-images.jianshu.io/upload_images/294870-4b72c9208470fa0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<ul>
+<li><p>IDE支持：APICloud Studio（基于Eclipse），Sublime Text插件（支持Linux），Atom插件，WebStom插件</p>
+</li>
+<li><p>端API</p>
+</li>
+<li><p>SuperWebView：APICloud官方推出的另一项重量级API生态产品，以SDK方式提供，致力于提升和改善移动设备Webview体验差的整套解决方案。</p>
+</li>
+<li><p>AUI，<a href="http://www.auicss.com/" target="_blank" rel="noopener">http://www.auicss.com/</a></p>
+</li>
+</ul>
+<p>小结：和DCloud非常类似，但是定位推广策略略有不同，APICloud可能更多是站在用户（不一定是开发）想解决用户的APP开发需求，最近重点推出了App外包服务。</p>
+<h3 id="四、Weex-http-weex-project-io-cn"><a href="#四、Weex-http-weex-project-io-cn" class="headerlink" title="四、Weex    http://weex-project.io/cn/"></a>四、Weex    <a href="http://weex-project.io/cn/" target="_blank" rel="noopener">http://weex-project.io/cn/</a></h3><p>是阿里的一个项目，对应React-Native而推出的Vue-Nactive。基于Vue编写，最后能编译成原生代码进行发布。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-b5ad8d31a77322eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h2 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h2><h3 id="一、PhoneCap-amp-Apache-Cordova"><a href="#一、PhoneCap-amp-Apache-Cordova" class="headerlink" title="一、PhoneCap &amp; Apache Cordova"></a>一、PhoneCap &amp; Apache Cordova</h3><p><a href="http://phonegap.com/" target="_blank" rel="noopener">http://phonegap.com/</a><br>Phonegap是一款开源的开发框架，旨在让开发者使用HTML、Javascript、CSS等Web APIs开发跨平台的移动应用程序。原本由Nitobi公司开发，现在由Adobe拥有。PhoneGap被Adobe收购后，剥离了核心代码贡献给 Apache Software Foundation，Apache 将这个项目命名为Cordova ，也就是说 PhoneGap 是基于 Cordova 的。现在很多Hyprid App的框架实际上都是基于Cordova来做的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-7ac6f9a8adc2c85a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="二、React-Native"><a href="#二、React-Native" class="headerlink" title="二、React Native"></a>二、React Native</h3><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener">https://facebook.github.io/react-native/</a><br>一句话，Build native mobile apps using JavaScript and React。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-3dde091a31de77cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="三、OnsenUI"><a href="#三、OnsenUI" class="headerlink" title="三、OnsenUI"></a>三、OnsenUI</h3><p><a href="https://onsen.io/" target="_blank" rel="noopener">https://onsen.io/</a><br>基于PhoneGap / Cordova，提供了一个统一的UI框架和工具，让你可以使用AngularJS、React、Vue之类的框架来进行App的开发，进一步提高App的开发效率。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-bfb6d8b05844e182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="四、Quasar-Framework"><a href="#四、Quasar-Framework" class="headerlink" title="四、Quasar Framework"></a>四、Quasar Framework</h3><p><a href="http://quasar-framework.org/" target="_blank" rel="noopener">http://quasar-framework.org/</a><br>也是基于Cordova，也支持Electron，不过是完全使用Vue2来进行架构。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-df8b90d431d8cc8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>类似的项目还有Framework7等等好多。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="RubyMotion"><a href="#RubyMotion" class="headerlink" title="RubyMotion"></a>RubyMotion</h3><p><a href="http://www.rubymotion.com/" target="_blank" rel="noopener">http://www.rubymotion.com/</a><br>使用同一种语言（Ruby）和同一套开发环境同时开发 iOS 和 Android 应用。RubyMotion 应用是静态编译的，并可以调用各平台原生 API。</p>
+<p>RubyMotion并不算Hybrid开发，但是对于我们来说也是可以尝试的一条道路呢。Mark一下！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294870-bbcb9a76688a50b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下一步研究可能更多集中在使用Vue开发的框架之上，例如Weex、OnsenUI、Quasar，而Cordova作为许多项目的基础，也是深入了解的内容。国内的DCloud、APICloud并不支持ES6，这个是一个硬伤。</p>
+<p>RubyMotion作为兴趣会作为课余的辅助了解对象。期望最后能够确定一个适合于我们团队和应用的最优解决方案。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/12/GTD效率/Calm——发现冥想的力量/" rel="next" title="Calm——发现冥想的力量">
+                <i class="fa fa-chevron-left"></i> Calm——发现冥想的力量
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/16/技术/阿里云表格存储笔记/" rel="prev" title="阿里云表格存储笔记">
+                阿里云表格存储笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wayne Deng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">105</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/waynedeng" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wayne.deng.cn@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#国内"><span class="nav-number">1.</span> <span class="nav-text">国内</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、AppCan-http-www-appcan-cn"><span class="nav-number">1.1.</span> <span class="nav-text">一、AppCan http://www.appcan.cn/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、DCloud-http-dcloud-io"><span class="nav-number">1.2.</span> <span class="nav-text">二、DCloud  http://dcloud.io/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、APICloud-http-www-apicloud-com"><span class="nav-number">1.3.</span> <span class="nav-text">三、APICloud  http://www.apicloud.com/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Weex-http-weex-project-io-cn"><span class="nav-number">1.4.</span> <span class="nav-text">四、Weex    http://weex-project.io/cn/</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#国外"><span class="nav-number">2.</span> <span class="nav-text">国外</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、PhoneCap-amp-Apache-Cordova"><span class="nav-number">2.1.</span> <span class="nav-text">一、PhoneCap &amp; Apache Cordova</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、React-Native"><span class="nav-number">2.2.</span> <span class="nav-text">二、React Native</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、OnsenUI"><span class="nav-number">2.3.</span> <span class="nav-text">三、OnsenUI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Quasar-Framework"><span class="nav-number">2.4.</span> <span class="nav-text">四、Quasar Framework</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RubyMotion"><span class="nav-number">3.1.</span> <span class="nav-text">RubyMotion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wayne Deng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
