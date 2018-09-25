@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.waynedeng.com/"/>
-  <updated>2018-09-15T15:11:55.825Z</updated>
+  <updated>2018-09-25T02:58:32.235Z</updated>
   <id>http://blog.waynedeng.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《江湖儿女》观感</title>
+    <link href="http://blog.waynedeng.com/2018/09/24/%E9%9A%8F%E7%AC%94/%E3%80%8A%E6%B1%9F%E6%B9%96%E5%84%BF%E5%A5%B3%E3%80%8B%E8%A7%82%E6%84%9F/"/>
+    <id>http://blog.waynedeng.com/2018/09/24/随笔/《江湖儿女》观感/</id>
+    <published>2018-09-24T14:49:00.000Z</published>
+    <updated>2018-09-25T02:58:32.235Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;img src=&quot;/2018/09/24/随笔/《江湖儿女》观感/2018-09-24-21-13-28.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="电影" scheme="http://blog.waynedeng.com/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>《率性而活》——认真的力量</title>
@@ -484,31 +510,6 @@
         
         
           &lt;p&gt;访问Solr，使用&lt;a href=&quot;https://github.com/sunspot/sunspot&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sunspot&lt;/a&gt;和&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Solr的Facet优化</title>
-    <link href="http://blog.waynedeng.com/2017/01/13/%E6%8A%80%E6%9C%AF/Solr%E7%9A%84Facet%E4%BC%98%E5%8C%96/"/>
-    <id>http://blog.waynedeng.com/2017/01/13/技术/Solr的Facet优化/</id>
-    <published>2017-01-13T03:29:00.000Z</published>
-    <updated>2018-09-11T15:54:15.692Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;这两周一直奋斗在一个有4亿条（200G）数据的项目当中，需求是需要快速的对数据进行检索和Facet/Group。&lt;/p&gt;
-&lt;p&gt;搭建了3台Solr服务器（4核8G）做Cloud，分了3个Shard，2个Replication，按道理性能应该不会差，实际跑下来，普通的检索完全
         
       
     
