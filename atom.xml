@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.waynedeng.com/"/>
-  <updated>2018-09-25T02:58:32.235Z</updated>
+  <updated>2018-09-25T06:13:45.911Z</updated>
   <id>http://blog.waynedeng.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>这类人，通常混得不错（转载）</title>
+    <link href="http://blog.waynedeng.com/2018/09/25/%E8%BF%99%E7%B1%BB%E4%BA%BA%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%B7%B7%E5%BE%97%E4%B8%8D%E9%94%99%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/"/>
+    <id>http://blog.waynedeng.com/2018/09/25/这类人，通常混得不错（转载）/</id>
+    <published>2018-09-25T06:11:08.000Z</published>
+    <updated>2018-09-25T06:13:45.911Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;有一种人，是很容易在职场上取得成功的——那些逆商高的人。&lt;br&gt;逆商的大意是，当一个人遇到挫折、困难时，是怎么来反应、处理和驾驭的。&lt;br&gt;逆商低的人呢，遇到困难时比较容易沮丧。或者自责、或者怨天尤人，总之难以接受逆境。&lt;br&gt;逆商高的人很少把一种
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="成长" scheme="http://blog.waynedeng.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>《江湖儿女》观感</title>
@@ -65,6 +92,61 @@
     
     
       <category term="电影" scheme="http://blog.waynedeng.com/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里合伙人制度</title>
+    <link href="http://blog.waynedeng.com/2018/09/15/%E9%98%BF%E9%87%8C%E5%90%88%E4%BC%99%E4%BA%BA%E5%88%B6%E5%BA%A6/"/>
+    <id>http://blog.waynedeng.com/2018/09/15/阿里合伙人制度/</id>
+    <published>2018-09-15T05:59:53.000Z</published>
+    <updated>2018-09-25T06:04:45.630Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;img src=&quot;/2018/09/15/阿里合伙人制度/2018-09-25-14-02-32.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="经济人生" scheme="http://blog.waynedeng.com/categories/%E7%BB%8F%E6%B5%8E%E4%BA%BA%E7%94%9F/"/>
+    
+    
+      <category term="管理" scheme="http://blog.waynedeng.com/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="阿里巴巴" scheme="http://blog.waynedeng.com/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-个人博客利器</title>
+    <link href="http://blog.waynedeng.com/2018/09/15/Hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%A9%E5%99%A8/"/>
+    <id>http://blog.waynedeng.com/2018/09/15/Hexo-个人博客利器/</id>
+    <published>2018-09-15T05:48:11.000Z</published>
+    <updated>2018-09-25T06:00:56.393Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;img src=&quot;/2018/09/15/Hexo-个人博客利器/2018-09-25-13-15-37.png&quot; title=&quot;Hexo&quot;&gt;
+&lt;h3 id=&quot;优点&quot;&gt;&lt;a href=&quot;#优点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="GTD效率" scheme="http://blog.waynedeng.com/categories/GTD%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="blog" scheme="http://blog.waynedeng.com/tags/blog/"/>
     
   </entry>
   
@@ -434,82 +516,6 @@
         
         
           &lt;p&gt;A fast JSON parser and Object marshaller as a Ruby gem.&lt;br&gt;&lt;a href=&quot;http://www.ohler.com/oj/&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>专治人生疑难杂症的《小说药丸》，人人适用（转）</title>
-    <link href="http://blog.waynedeng.com/2017/01/20/%E9%9A%8F%E7%AC%94/%E4%B8%93%E6%B2%BB%E4%BA%BA%E7%94%9F%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E7%9A%84%E3%80%8A%E5%B0%8F%E8%AF%B4%E8%8D%AF%E4%B8%B8%E3%80%8B%EF%BC%8C%E4%BA%BA%E4%BA%BA%E9%80%82%E7%94%A8%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
-    <id>http://blog.waynedeng.com/2017/01/20/随笔/专治人生疑难杂症的《小说药丸》，人人适用（转）/</id>
-    <published>2017-01-20T06:23:00.000Z</published>
-    <updated>2018-09-11T15:54:15.706Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;与这本书相遇，实际是因为一次图书促销的时候凑单看到。但收到货以后，只感到万分惊喜。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;迷茫？焦虑？愤怒？拖延症？感冒？头痛？痔疮？怀孕？&lt;/li&gt;
-&lt;li&gt;爱上不该爱的人？缺乏撩人技巧？不会再爱了？性生活太频繁？&lt;/li&gt;
-&lt;li&gt;犬儒主义？自我中心
-        
-      
-    
-    </summary>
-    
-      <category term="随笔" scheme="http://blog.waynedeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MooseFS在Ubuntu16下的安装</title>
-    <link href="http://blog.waynedeng.com/2017/01/16/%E6%8A%80%E6%9C%AF/MooseFS%E5%9C%A8Ubuntu16%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85/"/>
-    <id>http://blog.waynedeng.com/2017/01/16/技术/MooseFS在Ubuntu16下的安装/</id>
-    <published>2017-01-16T08:07:00.000Z</published>
-    <updated>2018-09-11T15:54:15.688Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/294870-01918e84779141b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://blog.waynedeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Solr中Queries和Filters的区别</title>
-    <link href="http://blog.waynedeng.com/2017/01/14/%E6%8A%80%E6%9C%AF/Solr%E4%B8%ADQueries%E5%92%8CFilters%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://blog.waynedeng.com/2017/01/14/技术/Solr中Queries和Filters的区别/</id>
-    <published>2017-01-14T08:31:00.000Z</published>
-    <updated>2018-09-11T15:54:15.691Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;访问Solr，使用&lt;a href=&quot;https://github.com/sunspot/sunspot&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sunspot&lt;/a&gt;和&lt;a
         
       
     
